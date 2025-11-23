@@ -1,1 +1,1 @@
-# puska
+# Ide várom a függvény szignatúrákat
