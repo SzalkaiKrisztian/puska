@@ -1,3 +1,4 @@
+//--------------------------------------------------------------------------Table------->
 /**
  * letrehoz egy obj-os Arry-t a tablanak
  * @type {TableRowObj[]}
@@ -23,8 +24,38 @@ const TableRowArr =[
         pelda2:"hoplita"
     }
 ]
-generateFrame("jsSection","jsTableRow",["Ókori település","Ágazat","Példa"])
+generateFrame("jsSection","jsBody",["Ókori település","Ágazat","Példa"])
 generateTableBody(TableRowArr)
+//---------------------------------------------------------------------------Checkbox------>
 const tablaValasztoCheckBox = document.getElementById('tablaValaszto')
 hideIfChecked(tablaValasztoCheckBox)
 tablaValasztoCheckBox.addEventListener('change',valtozas)
+//-----------------1. commit-----------------------------------------------Form------>
+/**
+ * @type {jsFormObj[]} 
+ */
+const jsFormArr = [
+    {
+        jel:"telep",
+        txt:"Ókori település:"
+    },
+    {
+        jel:"agazat",
+        txt:"Ágazat:"
+    },
+    {
+        jel:"pelda",
+        txt:"Példa:"
+    },
+    {
+        jel:"masikAgazat",
+        txt:"Másik Ágazat:"
+    },
+    {
+        jel:"masikPelda",
+        txt:"Másik Példa:"
+    }
+]
+const jsForm = generateForm("jsForm",jsFormArr)
+const htmlForm = document.getElementById('htmlForm')
+//-----------------2. commit------------------------------------------------eventListeners----->

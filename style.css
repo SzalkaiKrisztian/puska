@@ -7,3 +7,65 @@ table,tr,td,th{
 .hide{
     display:none;
 }
+button{
+    font-weight: bold;
+}
+/*---------------------------------Col tabla----------------------------------*/
+#htmlBody tr:nth-child(2n), #htmlSection table thead tr{
+    background-color: cyan;
+}
+#htmlBody tr:nth-child(2n-1){
+    background-color: snow;
+}
+#htmlBody tr:hover{
+    background-color: skyblue;
+}
+
+#htmlSection form button{
+    background-color: snow;
+}
+#htmlSection form button:hover{
+    background-color: cyan;
+}
+#htmlSection form div input{
+    background-color: cyan;
+}
+/*-----------------------------------Row tabla--------------------------------*/
+#jsBody tr td:nth-last-child(1), #jsBody tr td:nth-last-child(3){
+    background-color: burlywood;
+}
+
+#jsBody tr:not(:has(td[rowspan]))+tr:not(:has(td[rowspan])):hover td{
+    background-color: brown;
+}
+
+#jsBody tr:has(td[rowspan]):hover td{
+    background-color: brown;
+}
+
+#jsBody tr:has(td[rowspan]):hover +tr td{
+    background-color: brown;
+}
+
+#jsBody tr:has(td[rowspan])+tr:hover td{
+    background-color: brown;
+}
+
+#jsBody tr:has(td[rowspan]):has(+tr:hover) td{
+    background-color: brown;
+}
+
+#jsSection table thead tr{
+    background-color: brown;
+}
+
+#jsSection form button{
+    background-color: burlywood;
+}
+#jsSection form button:hover{
+    background-color: brown;
+}
+#jsSection form div input{
+    background-color: brown;
+}
+/*-----------------------------------------Java Script-------------------------*/

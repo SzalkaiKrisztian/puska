@@ -1,4 +1,7 @@
-/**@typedef {{telepules:string,agazat1:string,pelda1:string,agazat2?:string,pelda2?:string}} TableRowObj */
+/**
+ * @typedef {{telepules:string,agazat1:string,pelda1:string,agazat2?:string,pelda2?:string}} TableRowObj
+ * @typedef {{jel:string,txt:string}} jsFormObj
+ */
 /**
  * letrahoza egy sornak a celláját
  * @param {"td"|"th"} cellType 
@@ -72,7 +75,7 @@ function generateTableRow(parentBodyId,obj){
  * @returns {void}
  */
 function generateTableBody(arr){
-    const tbody = document.getElementById('jsTableRow')
+    const tbody = document.getElementById('jsBody')
 
     for(const obj of arr){
         generateTableRow(tbody,obj)
@@ -110,3 +113,64 @@ function valtozas(e){
     hideIfChecked(target)
 }
 //-------------------------------------1. Commit------------------------------------------
+/**
+ *  a sortörés szokásos sorait kiszervezem egy fuggvenybe mert 3x hivom meg
+ * @param {HTMLDivElement} parentDiv 
+ * @returns {void}
+ */
+function bR(parentDiv){
+    const br = document.createElement('br')
+    parentDiv.appendChild(br)
+}
+/**
+ *  létrehooza a html form deveket, it még nem különböznek
+ * @param {HTMLFormElement} parentForm 
+ * @param {string} labinpId 
+ * @param {string} labContent 
+ * @returns {void}
+ */
+function generateFormDiv(parentForm,labinpId,labContent){
+    const div = document.createElement('div')
+    parentForm.appendChild(div)
+
+    const label = document.createElement('label')
+    label.htmlFor=labinpId
+    label.innerText=labContent
+    div.appendChild(label)
+    bR(div)
+
+    const input = document.createElement('input')
+    input.type="text"
+    input.id=labinpId
+    input.name=labinpId
+    div.appendChild(input)
+    bR(div)
+
+    const span = document.createElement('span')
+    span.classList.add('error')
+    div.appendChild(span)
+    bR(div)
+}
+/**
+ * itt már különböznek itt 5 beviteli mező van és arryból visszük be az adatokat
+ * @param {string} formId 
+ * @param {jsFormObj[]} arrForm 
+ * @returns {HTMLFormElement}
+ */
+function generateForm(formId,arrForm){
+    const jsSection= document.getElementById('jsSection')
+
+    const form = document.createElement('form')
+    form.id=formId
+    jsSection.appendChild(form)
+    
+    for(const cim of arrForm){
+        generateFormDiv(form,cim.jel,cim.txt)
+    }
+
+    const button = document.createElement('button')
+    button.innerText="Hozzáadás"
+    form.appendChild(button)
+    return form
+}
+//------------------------------------2. commit------------------------------------------

@@ -19,7 +19,7 @@
                         <th colspan="2">Példa</th>
                     </tr>
                 </thead>
-                <tbody id="htmlTableCol">
+                <tbody id="htmlBody">
                     <tr>
                         <td>Athén</td>
                         <td>politika</td>
@@ -49,6 +49,29 @@
                     </tr>
                 </tbody>
             </table>
+            <form id="htmlForm">
+                <div>
+                    <label for="telep">Ókori település:</label><br>
+                    <input type="text" id="telep" name="telep"></input>
+                    <br><span class="error"></span><br>
+                </div>
+                <div>
+                    <label for="agazat">Ágazat:</label><br>
+                    <input type="text" id="agazat" name="agazat"></input>
+                    <br><span class="error"></span><br>
+                </div>
+                <div>
+                    <label for="pelda">Példa:</label><br>
+                    <input type="text" id="pelda" name="pelda"></input>
+                    <br><span class="error"></span><br>
+                </div>
+                <div>
+                    <label for="peldaCol">Másik Példa:</label><br>
+                    <input type="text" id="peldaCol" name="peldaCol"></input>
+                    <br><span class="error"></span><br>
+                </div>
+                <button>Hozzáadás</button>
+            </form>
         </div>
     </div>
     <script src="functions.js"></script>
