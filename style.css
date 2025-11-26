@@ -69,3 +69,7 @@ button{
     background-color: brown;
 }
 /*-----------------------------------------Java Script-------------------------*/
+div span.error{
+    color: red;
+    font-weight: bold;
+}

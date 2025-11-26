@@ -60,7 +60,8 @@ function generateTableRow(parentBodyId,obj){
 
     const tdT=generateTableCell("td",obj.telepules,trAlap)
     generateTableCell("td",obj.agazat1,trAlap)
-    generateTableCell("td",obj.pelda1,trAlap)
+    const tdP =generateTableCell("td",obj.pelda1,trAlap)
+    //row
     if(obj.agazat2 && obj.pelda2){
         tdT.rowSpan=2
         const trHozza = document.createElement('tr')
@@ -76,6 +77,7 @@ function generateTableRow(parentBodyId,obj){
  */
 function generateTableBody(arr){
     const tbody = document.getElementById('jsBody')
+    tbody.innerHTML=''
 
     for(const obj of arr){
         generateTableRow(tbody,obj)
@@ -174,3 +176,99 @@ function generateForm(formId,arrForm){
     return form
 }
 //------------------------------------2. commit------------------------------------------
+/**
+ * létrehozza a a tbodynak egy sorát
+ * @param {HTMLTableSectionElement} parentBodyId 
+ * @param {TableRowObj} obj 
+ * @returns {void}
+ */
+function generateTableRowCol(parentBodyId,obj){
+    const trAlap =document.createElement('tr')
+    parentBodyId.appendChild(trAlap)
+
+    generateTableCell("td",obj.telepules,trAlap)
+    generateTableCell("td",obj.agazat1,trAlap)
+    const tdP =generateTableCell("td",obj.pelda1,trAlap)
+    //col
+    if(obj.pelda2 ==false  || obj.pelda2 ==undefined){
+        tdP.colSpan=2
+    }else{
+        generateTableCell("td",obj.pelda2,trAlap)
+    }
+}
+/**
+ * 
+ * @param {HTMLInputElement} inputInput 
+ * @param {string} errorTxt 
+ * @returns {Boolean}
+ */
+function validField(inputInput,errorTxt){
+    let van = true
+    if(inputInput.value==''){
+        const parentDiv = inputInput.parentElement
+        const span = parentDiv.querySelector('.error')
+        span.innerText=errorTxt
+        van=false
+    }else{
+        const parentDiv = inputInput.parentElement
+        const span = parentDiv.querySelector('.error')
+        span.innerText=''
+    }
+    return van
+}
+/**
+ * 
+ * @param {HTMLInputElement} telepInput 
+ * @param {HTMLInputElement} agazatInput 
+ * @param {HTMLInputElement} peldaInput 
+ * @returns {Boolean}
+ */
+function validateFields(telepInput,agazatInput,peldaInput){
+    let van = true
+    if(validField(telepInput,"Error, kötelező kitölteni!") ==false){van=false}
+    if(validField(agazatInput,"Error, kötelező kitölteni!") ==false){van=false}
+    if(validField(peldaInput,"Error, kötelező kitölteni!") ==false){van=false}
+    return van
+}
+/**
+ * 
+ * @param {Event} e 
+ */
+function addToHtmlTable(e){
+    e.preventDefault()
+    /**@type {HTMLFormElement} */
+    const target = e.target
+
+    /**
+     * @type {TableRowObj}
+     */
+    const obj ={}
+
+    /**@type {HTMLInputElement} */
+    const telepInput = target.querySelector('#telep')
+    /**@type {HTMLInputElement} */
+    const agazatInput = target.querySelector('#agazat')
+    /**@type {HTMLInputElement} */
+    const peldaInput = target.querySelector('#pelda')
+    /**@type {HTMLInputElement} */
+    const peldaColInput = target.querySelector('#peldaCol')
+
+    if(validateFields(telepInput,agazatInput,peldaInput)){
+        /**@type {string} */
+        const telepString=telepInput.value
+        /**@type {string} */
+        const agazatString=agazatInput.value
+        /**@type {string} */
+        const peldaString=peldaInput.value
+        /**@type {string} */
+        const peldColString=peldaColInput.value
+
+        obj.telepules=telepString
+        obj.agazat1=agazatString
+        obj.pelda1=peldaString
+        peldColString =='' ? obj.pelda2=undefined : obj.pelda2=peldColString
+
+        const htmlBody = document.getElementById('htmlBody')
+        generateTableRowCol(htmlBody,obj)
+    }
+}
