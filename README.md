@@ -22,3 +22,13 @@
 # generateForm(formId: string, arrForm: jsFormObj[]): HTMLFormElement
 
 # ------------------------2. commit------------------------------------
+
+# generateTableRowCol(parentBodyId: HTMLTableSectionElement, obj: TableRowObj): void
+
+# validField(inputInput: HTMLInputElement, errorTxt: string): boolean
+
+# validateFields(telepInput: HTMLInputElement, agazatInput: HTMLInputElement, peldaInput: HTMLInputElement): boolean
+
+# addToHtmlTable(e: Event): void
+
+# -------------------------3. commit---------------------

@@ -272,3 +272,4 @@ function addToHtmlTable(e){
         generateTableRowCol(htmlBody,obj)
     }
 }
+//----------------------------------3. commit-------------------------------------------------
